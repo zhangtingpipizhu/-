@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>defineProperty</title>
+  </head>
+  <div id="definePropertyId">
+    <div ></div>
+  </div>
+  <body>
+    <script  type="text/javascript">
+    // let obj={}
+    // Object.defineProperty(obj,'name',{
+    //   enumerable:true,//是否可枚举
+    //   configurable:true,//是否可删除
+    //   writable:true,//是否可以重写
+    //   value:()=>{
+    //     console.log('aaaaa')
+    //   }
+    // })
+    // obj.name()
+    // console.log(obj)
+    //利用defineProperty实现更新数据，页面自动更新
+    function absoverData(data){
+      if(typeof data!=='object') return data
+      for(key of data){
+        let value =data[key]
+        setDefineProperty(data,key,value)
+      }
+    }
+//更新页面视图
+ function  upDateView(obj){
+   console.log('更新视图------》')
+
+
+ }
+function setDefineProperty(obj,key,value){
+  absoverData(value)
+  Object.defineProperty(obj,
+  key,
+  {
+    set(msg){//更新数据时触发
+      upDateView()
+      value=msg
+      absoverData(value)
+
+    },
+    get(){
+      return value
+    }
+
+  }
+
+  )
+
+}
+//初始化页面
+function initPage(){
+  let data={
+      name:'defineProperty测试',
+      adress:{
+        location:'上海',
+        locationNumber:441200
+      },
+      menuList:[{name:'苹果',num:9},{name:'香蕉',num:30}]
+    }
+    absoverData(data)
+}
+//给元素设置class(利用data属性名给元素赋值，for利用key以及item给class)
+function setDomClass(){
+
+}
+
+    </script>
+  </body>
+</html>
