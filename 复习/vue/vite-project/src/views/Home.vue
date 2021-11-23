@@ -105,8 +105,6 @@
         })
       })
 
-
-
       onMounted(() => {
         console.log(state.userName)
         // 接口调用
