@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>class</title>
+  </head>
+  <body>
+    <script  type="text/javascript">
+    //原型上的属性是公共的，实例上的
+    function Animal(name){
+      this.name=name
+      this.arr=[1,2.3,4]
+
+    }
+    Animal.prototype.num={price:123}
+let a1=new Animal('馒头')
+let a2=new Animal('桃子')
+console.log(a1,a2)
+console.log(a1.name,a2.name,a1.arr===a2.arr)//false
+console.log(a1.num===a2.num)//true
+console.log(a1.__proto__)
+console.log(Animal.__proto__.__proto__)//function
+
+    </script>
+  </body>
+</html>
