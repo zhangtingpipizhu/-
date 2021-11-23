@@ -39,9 +39,12 @@ function setDefineProperty(obj,key,value){
   key,
   {
     set(msg){//更新数据时触发
+    if(msg!==value){
       upDateView()
       value=msg
       absoverData(value)
+    }
+  
 
     },
     get(){
@@ -65,6 +68,19 @@ function initPage(){
     }
     absoverData(data)
 }
+
+//处理数组的方法防止数据使用数组方法时，不更新
+function newArryMethods(){
+  let mehodsList=['push','pop','unshfit','concat','splice']
+  mehodsList.forEach(item=>{
+    let oldMethod=Array.prototype[item]
+    Array.prototype[item]=function (){
+      upDateView()
+      oldMethod.call(this,...arguments)
+    }
+  })
+}
+
 //给元素设置class(利用data属性名给元素赋值，for利用key以及item给class)
 function setDomClass(){
 

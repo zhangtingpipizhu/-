@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>数组</title>
+  </head>
+  <body>
+    <script  type="text/javascript">
+    let arr=[1,2,3,4]
+    let num=arr.reduce((a,b)=>{
+      return a+b
+    })
+console.log(num)
+let arr2=[{num:2,price:30},{num:8,price:20}]
+let num2=[0,...arr2].reduce((a,b)=>{
+  return a+b.price*b.num
+})
+console.log(num2)
+let arr3=[{num:2,price:30},{num:8,price:20}]
+let num3=arr3.reduce((a,b)=>{
+  return a+b.price*b.num
+},0)//传入第一项的值不改变原数组
+
+console.log(num3)
+
+//
+let keys=['name','age']
+let values=['张婷',24]
+let obj=keys.reduce((memo,current,index)=>{
+  memo[current]=values[index]
+  return memo
+},{})
+console.log(obj,'obj---->')
+
+//redux内部函数原理
+function add(str1,str2){
+  return str1+str2
+}
+function toUpper(str){
+return str.toLocaleUpperCase()
+}
+function addStars(str){
+  return `***${str}***`
+}
+function compones(...fn){
+  return fn.reduce((a,b)=>{
+    console.log(a,b)
+    return(...args)=>{
+      return b(a(...args))
+
+    }
+  })
+}
+let str= compones(add,toUpper,addStars)('aaa','bbb')
+console.log(str)
+//实现reduce的原理
+
+// console.log()
+//利用js实现reduce
+Array.prototype.reduce=function (callback,pre){
+  for(let i=0;i<this.length;i++){
+    console.log('调用')
+    // let current=this[i]
+    if(pre!==undefined){
+     pre = callback(pre,this[i],i,this)
+    }else{
+      pre = callback(this[i],this[i+1],i,this)
+    }
+  }
+  return pre
+}
+let arry=['name','age','time','num']
+ let t= arry.reduce((a,b,index,current)=>{
+console.log(a,b,index,current)
+return a+b
+})
+console.log('---->',t)
+    </script>
+  </body>
+</html>

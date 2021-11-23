@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>箭头函数</title>
+  </head>
+  <body>
+    <script  type="text/javascript">
+/*    var a=111
+    // console.log(arguments,'window--->')//无值
+    let obj={
+      a:33,
+      fun:()=>{
+        //
+        // console.log(arguments,'fun--->')//无值
+        console.log(this.a,'------>')//111
+        setTimeout(()=>{
+          // console.log(arguments,'settimeout---->')//无值
+          console.log(this.a)//111
+        })
+      }
+    }
+    obj.fun()
+    //let
+    let a1=111
+    let obj1={
+      a1:33,
+      fun:()=>{
+        //
+        console.log(this.a1,'------>')//undefined
+        setTimeout(()=>{
+          console.log(this.a1)//undefined
+        })
+      }
+    }
+    obj1.fun() */
+    // let a=111
+    // let obj={
+    //   a:33,
+    //   fun:()=>{
+    //     //
+    //     // console.log(arguments,'fun--->')//无值
+    //     console.log(this.a,'------>')//undefined
+    //     setTimeout(function(){
+    //       console.log(arguments,'settimeout---->')//无值
+    //       console.log(this.a)//undefined
+    //     })
+    //   }
+    // }
+    // obj.fun()
+    // let a=111
+    // let obj={
+    //   a:33,
+    //   fun:function(){
+    //     //
+    //     // console.log(arguments,'fun--->')//无值
+    //     console.log(this.a,'------>')//33
+    //     setTimeout(function(){
+    //       console.log(arguments,'settimeout---->')//无值
+    //       console.log(this.a)//undefined
+    //     })
+    //   }
+    // }
+    // obj.fun()
+
+    let a=111
+    let obj={
+      a:33,
+      fun:function(){
+        //
+        // console.log(arguments,'fun--->')//无值
+        console.log(this.a,'------>')//33
+        setTimeout(()=>{
+          console.log(arguments,'settimeout---->')//无值
+          console.log(this.a)//33
+        })
+      }
+    }
+    obj.fun()
+
+    </script>
+  </body>
+</html>
